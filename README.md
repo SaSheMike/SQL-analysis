@@ -19,5 +19,5 @@ This project performs a deep dive into an e-commerce relational database to iden
 ## 📂 Repository Structure
 * `queries_portfolio.sql`: Full source code with documented analysis steps.
   
-**### 📫 Connect with me
+### 📫 Connect with me
 [LinkedIn - Mikkel E.T. Mortensen](https://www.linkedin.com/in/mikkel-e-t-mortensen-8b1656232/)

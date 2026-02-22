@@ -9,12 +9,14 @@ This project performs a deep dive into an e-commerce relational database to iden
 * **Logistics Impact:** Critical shipping delays cause customer satisfaction to drop by over 50%, falling from an average of **4.29 to 1.86 stars**.
 * **Customer Retention:** On average, returning customers take **78.23 days** to place a second order.
 * **Operational Efficiency:** Identified the Top 10 worst-performing sellers based on chronic "Critical Delays" (more than 10 per seller).
+* **Strategic Revenue:** Applied the Pareto principle (80/20) to identify "High Priority" categories that drive the bulk of the company's income.
 
 ## Technical Skills Demonstrated
 * **Advanced SQL Queries:** Usage of **CTEs (Common Table Expressions)** to modularize complex logic.
 * **Window Functions:** Applied `LAG()` to calculate time-intervals between sequential orders.
 * **Data Transformation:** Date manipulation using `julianday` and `strftime` for time-series analysis.
 * **Relational Logic:** Multiple `INNER JOINs` across Orders, Customers, and Reviews tables.
+* **Advanced Analytics:** Implemented running totals and dynamic categorization using window functions (SUM() OVER) and multi-layered CTEs.
 
 ## Repository Structure
 * `queries_portfolio.sql`: Full source code with documented analysis steps.

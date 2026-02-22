@@ -145,5 +145,56 @@ SELECT
 FROM 
 	AverageRetention
 
+/** 
+Name: Mikkel E.T. Mortensen
+Date: 22/02/26
+Description: Revenue By Category**/
+
+WITH CategoryRevenue AS (
+SELECT 
+	i.product_id AS ProductID,
+	c.product_category_name_english AS CategoryName,
+	SUM(Pa.payment_value) AS CategoryTotal
+FROM
+	Items AS i
+INNER JOIN
+	Payments AS Pa
+ON 
+	i.order_id = Pa.order_id
+INNER JOIN
+	Products AS Pr
+ON 
+	i.product_id = Pr.product_id
+INNER JOIN
+	Category AS c
+ON
+	Pr.product_category_name = c.product_category_name
+GROUP BY 
+	c.product_category_name_english
+ORDER BY
+	c.product_category_name_english
+),
+RunningTotals AS (
+SELECT
+	CategoryName,
+	CategoryTotal,
+	SUM(CategoryTotal) OVER (ORDER BY CategoryTotal DESC) AS TotalRevenue
+FROM
+	CategoryRevenue
+)
+SELECT
+	CategoryName,
+	CategoryTotal,
+	TotalRevenue,
+	round(((TotalRevenue/MAX(TotalRevenue) OVER()) * 100),2) AS TopPercentage,
+	CASE
+	WHEN round(((TotalRevenue/MAX(TotalRevenue) OVER()) * 100),2) <= 80 THEN 'High Priority'
+	ELSE 'Low Priority'
+	END AS Priority
+FROM
+	RunningTotals
+ORDER BY
+	CategoryTotal DESC
+
 
 	
